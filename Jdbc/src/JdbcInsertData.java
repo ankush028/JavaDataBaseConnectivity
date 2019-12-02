@@ -14,6 +14,7 @@ public class JdbcInsertData {
 		
 		int count1 = st.executeUpdate("delete table student");
 		System.out.println(count1);
+		con.cloase();
 		
 	}
 
