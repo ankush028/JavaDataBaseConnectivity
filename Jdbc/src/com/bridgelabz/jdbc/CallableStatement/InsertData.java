@@ -15,7 +15,7 @@ public class InsertData {
 		stmt.setInt(1,11);
 		stmt.setString(2,"Mohan");
 		stmt.execute();
-		
+		con.close();
 		System.out.println("Sucess");
 	}
 
