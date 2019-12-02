@@ -21,43 +21,47 @@ public class jdbcOperations {
 			Statement st = (Statement) jcon.connect();
 			try{
 				ResultSet rs = st.executeQuery("select*from student");
-			}finally{
-				jcon.close();	
-			}
-			 	System.out.println("srno  Student name");
+				 	System.out.println("srno  Student name");
 			while(rs.next()) {
 				      
 				System.out.println(rs.getInt(1)+"     "+rs.getString(2));
 			}
+			}finally{
+				jcon.close();	
+			}
+			
 		}
 		
 		public static void deletebyid(int sid) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
 			try{
 			int c = st.executeUpdate("delete from student where sid ="+sid+"");
+				System.out.println(c+" rows affected");
 			}finally{
 				jcon.close();	
 			}
-			System.out.println(c+" rows affected");
+			
 		}
 		
 		public static void deletebyname(String sname) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
 			try{
 			int c = st.executeUpdate("delete from student where sname ="+sname+"");
+				System.out.println(c+" rows affected");
 			}finally{
 				jcon.close();	
 			}
-			System.out.println(c+" rows affected");
+			
 		}
 		public static void updateData(int sid,String sname) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
 			try{
 			int c = st.executeUpdate("update student set sname="+sname+" where sid ="+sid+"");
+				System.out.println(c+" rows affected");
 			}finally{
 				jcon.close();	
 			}
-			System.out.println(c+" rows affected");
+			
 			
 		}
 }
