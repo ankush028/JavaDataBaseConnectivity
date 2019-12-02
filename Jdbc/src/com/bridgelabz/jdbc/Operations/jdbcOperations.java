@@ -19,7 +19,11 @@ public class jdbcOperations {
 		
 		public static void fetch() throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
-			ResultSet rs = st.executeQuery("select*from student");
+			try{
+				ResultSet rs = st.executeQuery("select*from student");
+			}finally{
+				jcon.close();	
+			}
 			 	System.out.println("srno  Student name");
 			while(rs.next()) {
 				      
@@ -29,18 +33,30 @@ public class jdbcOperations {
 		
 		public static void deletebyid(int sid) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
+			try{
 			int c = st.executeUpdate("delete from student where sid ="+sid+"");
+			}finally{
+				jcon.close();	
+			}
 			System.out.println(c+" rows affected");
 		}
 		
 		public static void deletebyname(String sname) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
+			try{
 			int c = st.executeUpdate("delete from student where sname ="+sname+"");
+			}finally{
+				jcon.close();	
+			}
 			System.out.println(c+" rows affected");
 		}
 		public static void updateData(int sid,String sname) throws ClassNotFoundException, SQLException {
 			Statement st = (Statement) jcon.connect();
+			try{
 			int c = st.executeUpdate("update student set sname="+sname+" where sid ="+sid+"");
+			}finally{
+				jcon.close();	
+			}
 			System.out.println(c+" rows affected");
 			
 		}
